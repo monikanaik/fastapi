@@ -1,0 +1,23 @@
+version: 0.3
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+      - echo "Installing dependencies..."
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "Running tests..."
+      - pytest
+      - echo "Building the FastAPI application"
+  post_build:
+    commands:
+      - echo "Deploying the FastAPI application"
+artifacts:
+  files:
+    - "**/*"
+  base-directory: fast  # Update this to your correct app directory
